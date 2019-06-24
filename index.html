@@ -8,7 +8,7 @@
             var data = document.getElementById("url").value;
 
             // Create QR Code
-            var qr = qrcode(0, "L");
+            var qr = qrcode(0, "Q");
             qr.addData(data);
             qr.make();
 
@@ -43,6 +43,7 @@
             // Add OpenSCAD code epilogue
             code += "// Render QR code with default settings (module 1x1x1)\r\n";
             code += "qr_render(qr_data);\r\n";
+            code += "cube(len(qr_data),len(qr_data),0.75);\r\n";
             code += "\r\n";
             code += "// QR code rendering method\r\n";
             code += "module qr_render(data, module_size = 1, height = 1) {\r\n";
